@@ -1,0 +1,13 @@
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Préstamo_System.resources
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe.config
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AgregarCliente.resources
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GestionarPagosForm.resources
