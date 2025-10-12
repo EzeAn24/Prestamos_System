@@ -58,50 +58,56 @@
             this.pagarCuotaBtn.Text = "Pagar Cuota Seleccionada";
             this.pagarCuotaBtn.UseVisualStyleBackColor = true;
             this.pagarCuotaBtn.Click += new System.EventHandler(this.pagarCuotaBtn_Click);
+
+            // --- SECCIÓN CORREGIDA ---
+            // 1. Primero se configuran las columnas individuales
             // 
-            // cuotasDataGridView
-            // 
-            this.cuotasDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.cuotasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.cuotasDataGridView.Location = new System.Drawing.Point(12, 81);
-            this.cuotasDataGridView.Name = "cuotasDataGridView";
-            this.cuotasDataGridView.Size = new System.Drawing.Size(838, 336);
-            this.cuotasDataGridView.TabIndex = 3;
-            // 
-            // Column1
+            // Column1 (N° Cuota)
             // 
             this.Column1.DataPropertyName = "NumeroCuota";
             this.Column1.HeaderText = "N° Cuota";
             this.Column1.Name = "Column1";
             // 
-            // Column2
+            // Column2 (Estado)
             // 
             this.Column2.DataPropertyName = "Estado";
             this.Column2.HeaderText = "Estado";
             this.Column2.Name = "Column2";
             // 
-            // Column3
+            // Column3 (Vencimiento)
             // 
             this.Column3.DataPropertyName = "FechaVencimiento";
             this.Column3.HeaderText = "Vencimiento";
             this.Column3.Name = "Column3";
             // 
-            // Column4
+            // Column4 (Monto)
             // 
             this.Column4.DataPropertyName = "Monto";
             dataGridViewCellStyle1.Format = "C2";
             this.Column4.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column4.HeaderText = " Monto";
             this.Column4.Name = "Column4";
-
-            // --- ESTA ES LA PARTE CORREGIDA ---
-            // Ahora agregamos las columnas DESPUÉS de haberlas configurado.
+            // 
+            // 2. Después se configura el DataGridView y SE AÑADEN las columnas ya configuradas
+            //
+            // cuotasDataGridView
+            // 
+            this.cuotasDataGridView.AllowUserToAddRows = false; // Buena práctica añadir esto
+            this.cuotasDataGridView.AllowUserToDeleteRows = false; // Buena práctica añadir esto
+            this.cuotasDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.cuotasDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.cuotasDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4});
-
+            this.cuotasDataGridView.Location = new System.Drawing.Point(12, 81);
+            this.cuotasDataGridView.Name = "cuotasDataGridView";
+            this.cuotasDataGridView.ReadOnly = true; // Buena práctica añadir esto
+            this.cuotasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect; // Es más intuitivo
+            this.cuotasDataGridView.Size = new System.Drawing.Size(838, 336);
+            this.cuotasDataGridView.TabIndex = 3;
+            // --- FIN SECCIÓN CORREGIDA ---
             // 
             // GestionarPagosForm
             // 
@@ -113,6 +119,7 @@
             this.Controls.Add(this.label1);
             this.Name = "GestionarPagosForm";
             this.Text = "GestionarPagosForm";
+            this.Load += new System.EventHandler(this.GestionarPagosForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cuotasDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

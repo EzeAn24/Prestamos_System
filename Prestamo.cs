@@ -37,15 +37,16 @@ namespace WindowsFormsApp1
         }
 
         // --- Constructor ---
-        public Prestamo(decimal monto, int cuotas, DateTime fechaInicio, Persona cliente)
+        public Prestamo(decimal monto, int cuotas, DateTime fechaInicio, Persona cliente, decimal tasaInteres)
         {
             this.MontoPrestado = monto;
             this.CantidadCuotas = cuotas;
             this.FechaInicio = fechaInicio;
             this.Cliente = cliente;
-            this.TasaInteres = 0.50m;
 
-            // --- PASO 3: CAMBIAR LA INICIALIZACIÓN DE LA LISTA ---
+            // --- CAMBIO CLAVE: Asignamos la tasa de interés que recibimos como parámetro ---
+            this.TasaInteres = tasaInteres;
+
             this.PlanDePagos = new BindingList<Cuota>();
 
             GenerarPlanDePagos();

@@ -28,29 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.agregarClienteBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.montoTextBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.aceptarBtn = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.fechaInicioPicker = new System.Windows.Forms.DateTimePicker();
+            this.label5 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.cuotasTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
-            this.fechaInicioPicker = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.aceptarBtn = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.montoTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.agregarClienteBtn = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.NombreCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoPrestado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MontoAdeudado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gestionarPagosBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.verReportesBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -81,50 +83,78 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de Préstamo";
             // 
-            // label1
+            // label7
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 55);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Ingrese el cliente:";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(1004, 129);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(238, 75);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Al hacer click en el siguiente\r\nbotón, agregará un nuevo\r\nprestamo a la lista de " +
+    "préstamos.\r\nPor favor corrobore que los datos\r\ningresados sean correctos";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // aceptarBtn
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(196, 52);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(219, 23);
-            this.comboBox1.TabIndex = 2;
+            this.aceptarBtn.Location = new System.Drawing.Point(1079, 214);
+            this.aceptarBtn.Name = "aceptarBtn";
+            this.aceptarBtn.Size = new System.Drawing.Size(75, 23);
+            this.aceptarBtn.TabIndex = 14;
+            this.aceptarBtn.Text = "Aceptar";
+            this.aceptarBtn.UseVisualStyleBackColor = true;
+            this.aceptarBtn.Click += new System.EventHandler(this.aceptarBtn_Click);
             // 
-            // agregarClienteBtn
+            // textBox3
             // 
-            this.agregarClienteBtn.Location = new System.Drawing.Point(421, 52);
-            this.agregarClienteBtn.Name = "agregarClienteBtn";
-            this.agregarClienteBtn.Size = new System.Drawing.Size(75, 23);
-            this.agregarClienteBtn.TabIndex = 3;
-            this.agregarClienteBtn.Text = "Agregar";
-            this.agregarClienteBtn.UseVisualStyleBackColor = true;
-            this.agregarClienteBtn.Click += new System.EventHandler(this.agregarClienteBtn_Click);
+            this.textBox3.Enabled = false;
+            this.textBox3.Location = new System.Drawing.Point(773, 179);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(122, 23);
+            this.textBox3.TabIndex = 13;
             // 
-            // label2
+            // label6
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(50, 111);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Monto a prestar:";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(476, 187);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(273, 15);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Fecha posible de finalización de pago:";
             // 
-            // montoTextBox
+            // fechaInicioPicker
             // 
-            this.montoTextBox.Location = new System.Drawing.Point(196, 103);
-            this.montoTextBox.Name = "montoTextBox";
-            this.montoTextBox.Size = new System.Drawing.Size(185, 23);
-            this.montoTextBox.TabIndex = 5;
+            this.fechaInicioPicker.Location = new System.Drawing.Point(707, 103);
+            this.fechaInicioPicker.Name = "fechaInicioPicker";
+            this.fechaInicioPicker.Size = new System.Drawing.Size(200, 23);
+            this.fechaInicioPicker.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(476, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(210, 15);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Fecha de Inicio del prestamo:";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(196, 210);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(71, 23);
+            this.numericUpDown1.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(50, 218);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(119, 15);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Tasa de Interés:";
             // 
             // cuotasTextBox
             // 
@@ -144,81 +174,54 @@
             this.label3.Text = "Cantidad de Cuotas:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label4
+            // montoTextBox
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(50, 218);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 15);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Tasa de Interés:";
+            this.montoTextBox.Location = new System.Drawing.Point(196, 103);
+            this.montoTextBox.Name = "montoTextBox";
+            this.montoTextBox.Size = new System.Drawing.Size(185, 23);
+            this.montoTextBox.TabIndex = 5;
             // 
-            // numericUpDown1
+            // label2
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(196, 210);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(71, 23);
-            this.numericUpDown1.TabIndex = 9;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(50, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(119, 15);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Monto a prestar:";
             // 
-            // label5
+            // agregarClienteBtn
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(476, 111);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(210, 15);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Fecha de Inicio del prestamo:";
+            this.agregarClienteBtn.Location = new System.Drawing.Point(421, 52);
+            this.agregarClienteBtn.Name = "agregarClienteBtn";
+            this.agregarClienteBtn.Size = new System.Drawing.Size(75, 23);
+            this.agregarClienteBtn.TabIndex = 3;
+            this.agregarClienteBtn.Text = "Agregar";
+            this.agregarClienteBtn.UseVisualStyleBackColor = true;
+            this.agregarClienteBtn.Click += new System.EventHandler(this.agregarClienteBtn_Click);
             // 
-            // fechaInicioPicker
+            // comboBox1
             // 
-            this.fechaInicioPicker.Location = new System.Drawing.Point(707, 103);
-            this.fechaInicioPicker.Name = "fechaInicioPicker";
-            this.fechaInicioPicker.Size = new System.Drawing.Size(200, 23);
-            this.fechaInicioPicker.TabIndex = 11;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(196, 52);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(219, 23);
+            this.comboBox1.TabIndex = 2;
             // 
-            // label6
+            // label1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(476, 187);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(273, 15);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Fecha posible de finalización de pago:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(773, 179);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(122, 23);
-            this.textBox3.TabIndex = 13;
-            // 
-            // aceptarBtn
-            // 
-            this.aceptarBtn.Location = new System.Drawing.Point(1079, 214);
-            this.aceptarBtn.Name = "aceptarBtn";
-            this.aceptarBtn.Size = new System.Drawing.Size(75, 23);
-            this.aceptarBtn.TabIndex = 14;
-            this.aceptarBtn.Text = "Aceptar";
-            this.aceptarBtn.UseVisualStyleBackColor = true;
-            this.aceptarBtn.Click += new System.EventHandler(this.aceptarBtn_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1004, 129);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(238, 75);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Al hacer click en el siguiente\r\nbotón, agregará un nuevo\r\nprestamo a la lista de " +
-    "préstamos.\r\nPor favor corrobore que los datos\r\ningresados sean correctos";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(50, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(140, 15);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Ingrese el cliente:";
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -227,6 +230,7 @@
             this.MontoAdeudado});
             this.dataGridView1.Location = new System.Drawing.Point(15, 370);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(1125, 276);
             this.dataGridView1.TabIndex = 1;
             // 
@@ -239,22 +243,24 @@
             // MontoPrestado
             // 
             this.MontoPrestado.DataPropertyName = "MontoPrestado";
-            dataGridViewCellStyle1.Format = "C2";
-            this.MontoPrestado.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Format = "C2";
+            this.MontoPrestado.DefaultCellStyle = dataGridViewCellStyle3;
             this.MontoPrestado.HeaderText = "Monto Prestado";
             this.MontoPrestado.Name = "MontoPrestado";
+            this.MontoPrestado.ReadOnly = true;
             // 
             // MontoAdeudado
             // 
             this.MontoAdeudado.DataPropertyName = "MontoAdeudado";
-            dataGridViewCellStyle2.Format = "C2";
-            this.MontoAdeudado.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Format = "C2";
+            this.MontoAdeudado.DefaultCellStyle = dataGridViewCellStyle4;
             this.MontoAdeudado.HeaderText = " Monto Adeudado";
             this.MontoAdeudado.Name = "MontoAdeudado";
+            this.MontoAdeudado.ReadOnly = true;
             // 
             // gestionarPagosBtn
             // 
-            this.gestionarPagosBtn.Location = new System.Drawing.Point(1158, 424);
+            this.gestionarPagosBtn.Location = new System.Drawing.Point(1158, 370);
             this.gestionarPagosBtn.Name = "gestionarPagosBtn";
             this.gestionarPagosBtn.Size = new System.Drawing.Size(99, 44);
             this.gestionarPagosBtn.TabIndex = 2;
@@ -262,11 +268,34 @@
             this.gestionarPagosBtn.UseVisualStyleBackColor = true;
             this.gestionarPagosBtn.Click += new System.EventHandler(this.gestionarPagosBtn_Click);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label8.Location = new System.Drawing.Point(577, 9);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(210, 22);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Sistema de Préstamos";
+            // 
+            // verReportesBtn
+            // 
+            this.verReportesBtn.Location = new System.Drawing.Point(1158, 437);
+            this.verReportesBtn.Name = "verReportesBtn";
+            this.verReportesBtn.Size = new System.Drawing.Size(99, 32);
+            this.verReportesBtn.TabIndex = 17;
+            this.verReportesBtn.Text = "Ver Reportes";
+            this.verReportesBtn.UseVisualStyleBackColor = true;
+            this.verReportesBtn.Click += new System.EventHandler(this.verReportesBtn_Click);
+            // 
             // Préstamo_System
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.verReportesBtn);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.gestionarPagosBtn);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.groupBox1);
@@ -277,6 +306,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -303,6 +333,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoPrestado;
         private System.Windows.Forms.DataGridViewTextBoxColumn MontoAdeudado;
         private System.Windows.Forms.Button gestionarPagosBtn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button verReportesBtn;
     }
 }
 

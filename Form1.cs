@@ -69,25 +69,22 @@ namespace WindowsFormsApp1
         {
             // --- PASO 1: VALIDACIÓN DE DATOS ---
 
-            // 1.1: ¿Se seleccionó un cliente?
-            // El ComboBox guarda el objeto Persona completo, no solo el texto.
+            // 1.1: Cliente seleccionado
             Persona clienteSeleccionado = comboBox1.SelectedItem as Persona;
-
             if (clienteSeleccionado == null)
             {
                 MessageBox.Show("Por favor, seleccione un cliente de la lista.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return; // Detiene la ejecución aquí
+                return;
             }
 
-            // 1.2: ¿Se ingresó un monto válido?
-            // Usamos decimal.TryParse para convertir el texto a número de forma segura.
+            // 1.2: Monto válido
             if (!decimal.TryParse(montoTextBox.Text, out decimal monto))
             {
                 MessageBox.Show("Por favor, ingrese un monto a prestar válido.", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // 1.3: ¿Se ingresó una cantidad de cuotas válida?
+            // 1.3: Cuotas válidas
             if (!int.TryParse(cuotasTextBox.Text, out int cuotas) || cuotas <= 0)
             {
                 MessageBox.Show("Por favor, ingrese una cantidad de cuotas válida (número entero mayor a cero).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -97,19 +94,23 @@ namespace WindowsFormsApp1
             // 1.4: Obtener la fecha
             DateTime fechaInicio = fechaInicioPicker.Value;
 
+            // --- NUEVO: 1.5 OBTENER TASA DE INTERÉS ---
+            // Leemos el valor del NumericUpDown y lo dividimos por 100 para tenerlo en formato decimal (ej: 50 se convierte en 0.50)
+            decimal tasaInteres = numericUpDown1.Value / 100;
+
 
             // --- PASO 2: CONFIRMACIÓN DEL USUARIO ---
 
-            // Creamos un mensaje detallado para que el usuario confirme.
+            // Mensaje de confirmación actualizado para mostrar la tasa de interés
             string mensajeConfirmacion = $"¿Está seguro que desea registrar el siguiente préstamo?\n\n" +
                                          $"Cliente: {clienteSeleccionado.ToString()}\n" +
                                          $"Monto: ${monto:N2}\n" +
                                          $"Cuotas: {cuotas}\n" +
+                                         $"Tasa de Interés: {numericUpDown1.Value}%\n" + // <-- LÍNEA AGREGADA
                                          $"Fecha de Inicio: {fechaInicio.ToShortDateString()}";
 
             DialogResult resultado = MessageBox.Show(mensajeConfirmacion, "Confirmar Préstamo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Si el usuario no presiona "Sí", detenemos todo.
             if (resultado == DialogResult.No)
             {
                 return;
@@ -118,33 +119,21 @@ namespace WindowsFormsApp1
 
             // --- PASO 3: CREACIÓN Y REGISTRO DEL PRÉSTAMO ---
 
-            // Si llegamos aquí, todos los datos son válidos y el usuario confirmó.
+            // --- CAMBIO CLAVE: Pasamos la 'tasaInteres' que acabamos de leer ---
+            Prestamo nuevoPrestamo = new Prestamo(monto, cuotas, fechaInicio, clienteSeleccionado, tasaInteres);
 
-            // 3.1: Creamos el nuevo objeto Prestamo con los datos del formulario.
-            Prestamo nuevoPrestamo = new Prestamo(monto, cuotas, fechaInicio, clienteSeleccionado);
-
-            // 3.2: Añadimos el préstamo a la lista de préstamos del cliente seleccionado.
-            // ¡Aquí es donde ocurre la magia de la estructura que creamos!
             clienteSeleccionado.Prestamos.Add(nuevoPrestamo);
 
 
             // --- PASO 4: FEEDBACK Y LIMPIEZA ---
-
-            // ...
             MessageBox.Show("¡Préstamo registrado con éxito!", "Operación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // --- NUEVA LÍNEA ---
             ActualizarGrillaPrestamos();
 
-            // Limpiamos los campos para el próximo registro.
-            montoTextBox.Clear();
-            // ... resto del código de limpieza
-
-            // 4.2: Limpiamos los campos para el próximo registro.
             montoTextBox.Clear();
             cuotasTextBox.Clear();
             comboBox1.Text = "Seleccione un cliente...";
-            fechaInicioPicker.Value = DateTime.Now; // Restablece la fecha a hoy
+            fechaInicioPicker.Value = DateTime.Now;
+            numericUpDown1.Value = 0; // Opcional: Resetea el interés a 0 para el próximo préstamo
         }
 
         private void ActualizarGrillaPrestamos()
@@ -185,6 +174,47 @@ namespace WindowsFormsApp1
             // 5. ¡PASO CLAVE! Cuando la ventana de gestión se cierra,
             // actualizamos la grilla principal porque el "Monto Adeudado" pudo haber cambiado.
             ActualizarGrillaPrestamos();
+        }
+
+        private void verReportesBtn_Click(object sender, EventArgs e)
+        {
+            // 1. Obtenemos una lista plana con TODOS los préstamos de TODOS los clientes.
+            var todosLosPrestamos = listaDeClientes.SelectMany(cliente => cliente.Prestamos).ToList();
+
+            if (!todosLosPrestamos.Any())
+            {
+                MessageBox.Show("No hay préstamos registrados para generar un reporte.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 2. CÁLCULO: Capital Total Prestado (Préstamos Activos)
+            // Filtramos los préstamos que todavía tienen deuda (MontoAdeudado > 0)
+            // y sumamos su 'MontoPrestado' original.
+            decimal capitalActivo = todosLosPrestamos
+                .Where(p => p.MontoAdeudado > 0)
+                .Sum(p => p.MontoPrestado);
+
+            // 3. CÁLCULO: Ganancias Históricas (Intereses ya cobrados)
+            decimal gananciasHistoricas = 0;
+            foreach (var prestamo in todosLosPrestamos)
+            {
+                // Evitamos división por cero si un préstamo no tuviera cuotas.
+                if (prestamo.CantidadCuotas > 0)
+                {
+                    // Calculamos cuánto del monto de una cuota corresponde a interés.
+                    decimal interesPorCuota = (prestamo.MontoTotalConInteres - prestamo.MontoPrestado) / prestamo.CantidadCuotas;
+
+                    // Contamos cuántas cuotas de este préstamo ya fueron pagadas.
+                    int cuotasPagas = prestamo.PlanDePagos.Count(c => c.Estado == EstadoCuota.Pagada);
+
+                    // Sumamos la ganancia de este préstamo al total.
+                    gananciasHistoricas += cuotasPagas * interesPorCuota;
+                }
+            }
+
+            // 4. Creamos y mostramos el formulario de reportes, pasándole los resultados.
+            ReportesForm formReportes = new ReportesForm(capitalActivo, gananciasHistoricas);
+            formReportes.ShowDialog();
         }
     }
 }
