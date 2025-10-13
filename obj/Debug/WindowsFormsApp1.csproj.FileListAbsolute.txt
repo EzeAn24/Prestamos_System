@@ -12,3 +12,13 @@ C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prest
 C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.AgregarCliente.resources
 C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.GestionarPagosForm.resources
 C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.ReportesForm.resources
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\Dapper.dll
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\System.Data.SQLite.dll
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\Dapper.xml
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsF.A1EEDF9B.Up2Date
