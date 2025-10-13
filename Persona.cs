@@ -8,6 +8,7 @@ namespace WindowsFormsApp1
 {
     public class Persona
     {
+        public int Id { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
 

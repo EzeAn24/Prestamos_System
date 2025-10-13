@@ -58,46 +58,46 @@ namespace WindowsFormsApp1
 
 
         // --- EVENTO CLICK DEL BOTÓN "PAGAR CUOTA" ---
+        // --- REEMPLAZA ESTE MÉTODO EN GestionarPagosForm.cs ---
         private void pagarCuotaBtn_Click(object sender, EventArgs e)
         {
+            // 1. Verificamos que haya una fila seleccionada.
             if (cuotasDataGridView.CurrentRow == null)
             {
                 MessageBox.Show("Por favor, seleccione una cuota para pagar.", "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // --- CAMBIO CLAVE ---
-            // 1. Obtenemos el número de la cuota desde la celda 0 (la primera columna)
-            int numeroCuotaSeleccionada = Convert.ToInt32(cuotasDataGridView.CurrentRow.Cells[0].Value);
+            // 2. Obtenemos la cuota usando el índice de la fila, que es el método correcto para tu caso.
+            int selectedIndex = cuotasDataGridView.CurrentRow.Index;
+            Cuota cuotaSeleccionada = _prestamoActual.PlanDePagos[selectedIndex];
 
-            // 2. Usamos LINQ para encontrar el objeto 'Cuota' real en nuestra lista
-            Cuota cuotaSeleccionada = _prestamoActual.PlanDePagos
-                                        .FirstOrDefault(c => c.NumeroCuota == numeroCuotaSeleccionada);
-
-            if (cuotaSeleccionada == null)
-            {
-                MessageBox.Show("Error al encontrar la cuota seleccionada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // --- FIN CAMBIO CLAVE ---
-
+            // 3. Verificamos si ya está pagada (leyendo el estado real del objeto).
             if (cuotaSeleccionada.Estado == EstadoCuota.Pagada)
             {
                 MessageBox.Show("Esta cuota ya ha sido pagada.", "Operación no válida", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
+            // 4. Pedimos confirmación al usuario.
             string mensaje = $"¿Confirma el pago de la cuota N° {cuotaSeleccionada.NumeroCuota} por un monto de ${cuotaSeleccionada.Monto:N2}?";
             DialogResult confirmacion = MessageBox.Show(mensaje, "Confirmar Pago", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirmacion == DialogResult.Yes)
             {
+                // 5. Actualizamos el objeto en memoria.
                 cuotaSeleccionada.Estado = EstadoCuota.Pagada;
                 cuotaSeleccionada.FechaDePago = DateTime.Now;
 
-                // Actualizamos la fila visualmente
-                cuotasDataGridView.CurrentRow.Cells[1].Value = EstadoCuota.Pagada.ToString(); // Celda 'Estado'
+                // 6. Guardamos el cambio en la base de datos.
+                DatabaseManager.UpdateCuota(cuotaSeleccionada);
 
+                // --- LA SOLUCIÓN MÁGICA ---
+                // 7. Le ordenamos directamente a la celda que actualice su valor visual.
+                //    Asumimos que la columna "Estado" es la segunda (índice 1). Si la moviste, ajusta el número.
+                cuotasDataGridView.CurrentRow.Cells[1].Value = "Pagada";
+
+                // 8. Informamos al usuario.
                 MessageBox.Show("¡Pago registrado con éxito!", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

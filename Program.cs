@@ -16,6 +16,8 @@ namespace WindowsFormsApp1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            DatabaseManager.InitializeDatabase();
+
             Application.Run(new Préstamo_System());
         }
     }
