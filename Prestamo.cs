@@ -4,12 +4,20 @@ using System.Linq;
 
 namespace WindowsFormsApp1
 {
+    public enum TipoDeCuota
+    {
+        Diario,
+        Semanal,
+        Mensual
+    }
+
     public class Prestamo
     {
         public int Id { get; set; }
         public int PersonaId { get; set; }
         public decimal MontoPrestado { get; set; }
         public int CantidadCuotas { get; set; }
+        public TipoDeCuota TipoDeCuota { get; set; }
         public DateTime FechaInicio { get; set; }
         public decimal TasaInteres { get; set; }
         public Persona Cliente { get; set; }
@@ -21,7 +29,7 @@ namespace WindowsFormsApp1
         public Prestamo() { }
 
         // Mantenemos el constructor que ya usábamos para crear nuevos préstamos desde el formulario.
-        public Prestamo(decimal monto, int cuotas, DateTime fechaInicio, Persona cliente, decimal tasaInteres)
+        public Prestamo(decimal monto, int cuotas, DateTime fechaInicio, Persona cliente, decimal tasaInteres, TipoDeCuota tipoDeCuota)
         {
             this.MontoPrestado = monto;
             this.CantidadCuotas = cuotas;
@@ -29,6 +37,7 @@ namespace WindowsFormsApp1
             this.Cliente = cliente;
             this.TasaInteres = tasaInteres;
             this.PlanDePagos = new BindingList<Cuota>();
+            this.TipoDeCuota = tipoDeCuota;
 
             GenerarPlanDePagos();
         }
@@ -57,13 +66,28 @@ namespace WindowsFormsApp1
         {
             if (CantidadCuotas <= 0) return;
             decimal valorCuota = Math.Round(MontoTotalConInteres / CantidadCuotas, 2);
+            DateTime fechaVencimiento;
             for (int i = 1; i <= CantidadCuotas; i++)
             {
+                switch (this.TipoDeCuota)
+                {
+                    case TipoDeCuota.Semanal:
+                        fechaVencimiento = this.FechaInicio.AddDays(i * 7);
+                        break;
+                    case TipoDeCuota.Mensual:
+                        fechaVencimiento = this.FechaInicio.AddMonths(i);
+                        break;
+                    case TipoDeCuota.Diario:
+                    default:
+                        fechaVencimiento = this.FechaInicio.AddDays(i);
+                        break;
+                }
+
                 Cuota nuevaCuota = new Cuota
                 {
                     NumeroCuota = i,
                     Monto = valorCuota,
-                    FechaVencimiento = this.FechaInicio.AddDays(i)
+                    FechaVencimiento = fechaVencimiento // Usamos la fecha que calculamos
                 };
                 this.PlanDePagos.Add(nuevaCuota);
             }

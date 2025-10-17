@@ -20,6 +20,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
+            tipoCuotaComboBox.DataSource = Enum.GetValues(typeof(TipoDeCuota));
 
             // Al iniciar el programa, llamamos a nuestro método centralizado 
             // para cargar toda la información desde la base de datos.
@@ -103,6 +104,7 @@ namespace WindowsFormsApp1
             if (!int.TryParse(cuotasTextBox.Text, out int cuotas) || cuotas <= 0) { MessageBox.Show("Por favor, ingrese una cantidad de cuotas válida (número entero mayor a cero).", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
             DateTime fechaInicio = fechaInicioPicker.Value;
             decimal tasaInteres = numericUpDown1.Value / 100;
+            TipoDeCuota tipoCuotaSeleccionado = (TipoDeCuota)tipoCuotaComboBox.SelectedItem;
 
             // --- PASO 2: CONFIRMACIÓN DEL USUARIO ---
             string mensajeConfirmacion = $"¿Está seguro que desea registrar el siguiente préstamo?\n\nCliente: {clienteSeleccionado}\nMonto: {monto:C2}\nCuotas: {cuotas}\nTasa de Interés: {numericUpDown1.Value}%\nFecha de Inicio: {fechaInicio.ToShortDateString()}";
@@ -110,7 +112,7 @@ namespace WindowsFormsApp1
             if (resultado == DialogResult.No) return;
 
             // --- PASO 3: CREACIÓN Y REGISTRO DEL PRÉSTAMO ---
-            Prestamo nuevoPrestamo = new Prestamo(monto, cuotas, fechaInicio, clienteSeleccionado, tasaInteres);
+            Prestamo nuevoPrestamo = new Prestamo(monto, cuotas, fechaInicio, clienteSeleccionado, tasaInteres, tipoCuotaSeleccionado);
             nuevoPrestamo.PersonaId = clienteSeleccionado.Id;
             DatabaseManager.SavePrestamo(nuevoPrestamo);
 

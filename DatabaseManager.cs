@@ -67,6 +67,7 @@ namespace WindowsFormsApp1
                     CantidadCuotas INTEGER NOT NULL,
                     TasaInteres REAL NOT NULL,
                     FechaInicio TEXT NOT NULL,
+                    TipoDeCuota TEXT NOT NULL,
                     FOREIGN KEY (PersonaId) REFERENCES Personas(Id)
                 );";
 
@@ -81,6 +82,7 @@ namespace WindowsFormsApp1
                     FechaDePago TEXT,
                     FOREIGN KEY (PrestamoId) REFERENCES Prestamos(Id)
                 );";
+
 
                 connection.Execute(createPersonasTableSql);
                 connection.Execute(createPrestamosTableSql);
@@ -113,7 +115,13 @@ namespace WindowsFormsApp1
             using (var connection = GetConnection())
             {
                 connection.Open();
-                string prestamoSql = @"INSERT INTO Prestamos (PersonaId, MontoPrestado, CantidadCuotas, TasaInteres, FechaInicio) VALUES (@PersonaId, @MontoPrestado, @CantidadCuotas, @TasaInteres, @FechaInicio); SELECT last_insert_rowid();";
+
+                string prestamoSql = @"INSERT INTO Prestamos 
+                               (PersonaId, MontoPrestado, CantidadCuotas, TasaInteres, FechaInicio, TipoDeCuota) 
+                               VALUES 
+                               (@PersonaId, @MontoPrestado, @CantidadCuotas, @TasaInteres, @FechaInicio, @TipoDeCuota);
+                               SELECT last_insert_rowid();"; // El comando mágico no cambia
+
                 var prestamoId = connection.ExecuteScalar<int>(prestamoSql, prestamo);
 
                 if (prestamo.PlanDePagos != null && prestamo.PlanDePagos.Any())
