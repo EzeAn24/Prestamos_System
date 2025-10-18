@@ -53,6 +53,7 @@
             this.gestionarPagosBtn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.verReportesBtn = new System.Windows.Forms.Button();
+            this.darDeBajaBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -221,7 +222,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Imprint MT Shadow", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(67, 60);
+            this.label1.Location = new System.Drawing.Point(72, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 18);
             this.label1.TabIndex = 1;
@@ -270,7 +271,7 @@
             // 
             // gestionarPagosBtn
             // 
-            this.gestionarPagosBtn.Location = new System.Drawing.Point(1167, 416);
+            this.gestionarPagosBtn.Location = new System.Drawing.Point(1233, 309);
             this.gestionarPagosBtn.Name = "gestionarPagosBtn";
             this.gestionarPagosBtn.Size = new System.Drawing.Size(99, 44);
             this.gestionarPagosBtn.TabIndex = 2;
@@ -294,7 +295,7 @@
             // 
             // verReportesBtn
             // 
-            this.verReportesBtn.Location = new System.Drawing.Point(1167, 483);
+            this.verReportesBtn.Location = new System.Drawing.Point(1233, 413);
             this.verReportesBtn.Name = "verReportesBtn";
             this.verReportesBtn.Size = new System.Drawing.Size(99, 32);
             this.verReportesBtn.TabIndex = 17;
@@ -302,12 +303,23 @@
             this.verReportesBtn.UseVisualStyleBackColor = true;
             this.verReportesBtn.Click += new System.EventHandler(this.verReportesBtn_Click);
             // 
+            // darDeBajaBtn
+            // 
+            this.darDeBajaBtn.Location = new System.Drawing.Point(1233, 359);
+            this.darDeBajaBtn.Name = "darDeBajaBtn";
+            this.darDeBajaBtn.Size = new System.Drawing.Size(99, 44);
+            this.darDeBajaBtn.TabIndex = 18;
+            this.darDeBajaBtn.Text = "Dar de Baja Préstamo";
+            this.darDeBajaBtn.UseVisualStyleBackColor = true;
+            this.darDeBajaBtn.Click += new System.EventHandler(this.darDeBajaBtn_Click);
+            // 
             // Préstamo_System
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.darDeBajaBtn);
             this.Controls.Add(this.verReportesBtn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.gestionarPagosBtn);
@@ -349,6 +361,7 @@
         private System.Windows.Forms.Button verReportesBtn;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox tipoCuotaComboBox;
+        private System.Windows.Forms.Button darDeBajaBtn;
     }
 }
 

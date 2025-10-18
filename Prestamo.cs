@@ -4,6 +4,12 @@ using System.Linq;
 
 namespace WindowsFormsApp1
 {
+    public enum EstadoPrestamo
+    {
+        Activo,
+        CanceladoError, // Para errores de carga
+        CanceladoDeudor // Para deudores incobrables
+    }
     public enum TipoDeCuota
     {
         Diario,
@@ -18,6 +24,7 @@ namespace WindowsFormsApp1
         public decimal MontoPrestado { get; set; }
         public int CantidadCuotas { get; set; }
         public TipoDeCuota TipoDeCuota { get; set; }
+        public EstadoPrestamo Estado { get; set; }
         public DateTime FechaInicio { get; set; }
         public decimal TasaInteres { get; set; }
         public Persona Cliente { get; set; }
@@ -26,7 +33,10 @@ namespace WindowsFormsApp1
         // --- CONSTRUCTOR VACÍO AGREGADO ---
         // Esto es lo que Dapper necesita para poder crear el objeto
         // antes de rellenar sus propiedades desde la base de datos.
-        public Prestamo() { }
+        public Prestamo() 
+        {
+            Estado = EstadoPrestamo.Activo;
+        }
 
         // Mantenemos el constructor que ya usábamos para crear nuevos préstamos desde el formulario.
         public Prestamo(decimal monto, int cuotas, DateTime fechaInicio, Persona cliente, decimal tasaInteres, TipoDeCuota tipoDeCuota)
@@ -38,6 +48,7 @@ namespace WindowsFormsApp1
             this.TasaInteres = tasaInteres;
             this.PlanDePagos = new BindingList<Cuota>();
             this.TipoDeCuota = tipoDeCuota;
+            this.Estado = EstadoPrestamo.Activo; // También se inicializa como activo
 
             GenerarPlanDePagos();
         }

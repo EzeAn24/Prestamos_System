@@ -68,6 +68,7 @@ namespace WindowsFormsApp1
                     TasaInteres REAL NOT NULL,
                     FechaInicio TEXT NOT NULL,
                     TipoDeCuota TEXT NOT NULL,
+                    Estado TEXT NOT NULL DEFAULT 'Activo',
                     FOREIGN KEY (PersonaId) REFERENCES Personas(Id)
                 );";
 
@@ -143,6 +144,18 @@ namespace WindowsFormsApp1
                 connection.Open();
                 string sql = @"UPDATE Cuotas SET Estado = @Estado, FechaDePago = @FechaDePago WHERE Id = @Id;";
                 connection.Execute(sql, cuota);
+            }
+        }
+
+        public static void UpdatePrestamoEstado(int prestamoId, EstadoPrestamo nuevoEstado)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string sql = @"UPDATE Prestamos
+                       SET Estado = @Estado
+                       WHERE Id = @Id;";
+                connection.Execute(sql, new { Estado = nuevoEstado.ToString(), Id = prestamoId });
             }
         }
 

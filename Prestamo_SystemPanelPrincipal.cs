@@ -30,12 +30,12 @@ namespace WindowsFormsApp1
         // --- MÉTODO CENTRALIZADO PARA CARGAR Y REFESCAR DATOS ---
         private void CargarDatosCompletosDesdeDB()
         {
-            // 1. Cargamos todas las listas desde la base de datos.
+            // 1. Carga de todas las listas desde la base de datos.
             listaDeClientes = DatabaseManager.GetPersonas();
             List<Prestamo> todosLosPrestamos = DatabaseManager.GetPrestamos();
             List<Cuota> todasLasCuotas = DatabaseManager.GetCuotas();
 
-            // 2. "Armamos el rompecabezas" en memoria para conectar los objetos.
+            // 2. Se enlazan los datos de memoria.
             foreach (var prestamo in todosLosPrestamos)
             {
                 prestamo.PlanDePagos = new BindingList<Cuota>(todasLasCuotas.Where(c => c.PrestamoId == prestamo.Id).ToList());
@@ -144,7 +144,10 @@ namespace WindowsFormsApp1
         {
             var todosLosPrestamos = listaDeClientes.SelectMany(cliente => cliente.Prestamos).ToList();
             if (!todosLosPrestamos.Any()) { MessageBox.Show("No hay préstamos registrados para generar un reporte.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
-            decimal capitalActivo = todosLosPrestamos.Where(p => p.MontoAdeudado > 0).Sum(p => p.MontoPrestado);
+            decimal capitalActivo = listaDeClientes
+                .SelectMany(cliente => cliente.Prestamos) // Asegúrate de usar la lista actualizada en memoria
+                .Where(p => p.Estado == EstadoPrestamo.Activo) // Solo préstamos activos
+                .Sum(p => p.MontoAdeudado); // Sumamos lo que realmente queda por cobrar
             decimal gananciasHistoricas = 0;
             foreach (var prestamo in todosLosPrestamos)
             {
@@ -160,5 +163,39 @@ namespace WindowsFormsApp1
         }
 
         private void label3_Click(object sender, EventArgs e) { }
+
+        private void darDeBajaBtn_Click(object sender, EventArgs e)
+        {
+            // 1. Validar que haya un préstamo seleccionado en la grilla
+            if (dataGridView1.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione un préstamo de la lista para dar de baja.", "Sin selección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            Prestamo prestamoSeleccionado = dataGridView1.CurrentRow.DataBoundItem as Prestamo;
+
+            // 2. Verificar que el préstamo no esté ya dado de baja
+            if (prestamoSeleccionado.Estado != EstadoPrestamo.Activo)
+            {
+                MessageBox.Show("Este préstamo ya ha sido dado de baja.", "Operación no válida", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // 3. Abrir el formulario para preguntar el motivo
+            BajaPrestamoForm bajaForm = new BajaPrestamoForm();
+            if (bajaForm.ShowDialog() == DialogResult.OK)
+            {
+                // 4. Si el usuario confirma, obtener el motivo y actualizar la BD
+                EstadoPrestamo motivo = bajaForm.MotivoBaja;
+                DatabaseManager.UpdatePrestamoEstado(prestamoSeleccionado.Id, motivo);
+
+                // 5. Refrescar la pantalla para que se vea el cambio (o para que desaparezca si filtramos)
+                CargarDatosCompletosDesdeDB();
+
+                MessageBox.Show("Préstamo dado de baja con éxito.", "Baja Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            // Si el usuario cancela, no hacemos nada
+        }
     }
 }
