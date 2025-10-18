@@ -27,3 +27,4 @@ C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prest
 C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\Prestamo.896FD573.Up2Date
 C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\ezean\OneDrive\Desktop\Trabajo\J&C-ServiciosInformaticos\Software\Prestamos_System\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BajaPrestamoForm.resources
